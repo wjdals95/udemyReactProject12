@@ -47,6 +47,7 @@ const CourseInput = (props) => {
       setIsVaild(true);
     }
     setEnteredValue(event.target.value);
+
   };
 
   const formSubmitHandler = (event) => {
@@ -57,6 +58,8 @@ const CourseInput = (props) => {
       return;
     }
     props.onAddGoal(enteredValue);
+    
+    setEnteredValue('');
   };
 
   return (
@@ -70,7 +73,7 @@ const CourseInput = (props) => {
      {/* css module 사용하기 */}
       <div className={`${styles['form-control']} ${!isVaild && styles.invalid}`}>
         <label>Course Goal</label>
-        <input type="text" onChange={goalInputChangeHandler} />
+        <input type="text" onChange={goalInputChangeHandler} value={enteredValue} />
       </div>
       <Button type="submit">Add Goal</Button>
     </form>
